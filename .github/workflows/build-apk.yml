@@ -23,20 +23,18 @@ jobs:
       - name: Unzip Android project
         run: |
           mkdir project
-          unzip DesiCinemaTV-v1.4-AdBlock-Project.zip -d project
-          ls -la project
-          find project -maxdepth 2 -type f
+          unzip DesiCinemaTV-v1.5-PlayerFix-Project.zip -d project
+          ls -la project/v15build
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build APK
-        working-directory: project/v14build
-        run: |
-          gradle assembleDebug
+        working-directory: project/v15build
+        run: gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: DesiCinemaTV-v1.4-APK
-          path: project/v14build/app/build/outputs/apk/debug/*.apk
+          name: DesiCinemaTV-v1.5-APK
+          path: project/v15build/app/build/outputs/apk/debug/*.apk
