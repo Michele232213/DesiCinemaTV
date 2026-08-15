@@ -23,18 +23,18 @@ jobs:
       - name: Unzip Android project
         run: |
           mkdir project
-          unzip DesiCinemaTV-v1.5-PlayerFix-Project.zip -d project
-          ls -la project/v15build
+          unzip DesiCinemaTV-v1.6-PlayerShield-Project.zip -d project
+          ls -la project/v16build
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build APK
-        working-directory: project/v15build
+        working-directory: project/v16build
         run: gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: DesiCinemaTV-v1.5-APK
-          path: project/v15build/app/build/outputs/apk/debug/*.apk
+          name: DesiCinemaTV-v1.6-APK
+          path: project/v16build/app/build/outputs/apk/debug/*.apk
